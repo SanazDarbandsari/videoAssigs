@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        td,
+        th {
+            border: 1px solid rgba(0, 0, 255, 0.196);
+            border-collapse: collapse;
+        }
+
+        .delete {
+            background-color: rgba(255, 0, 0, 0.61);
+        }
+
+        .submit {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="fname" placeholder="first name...">
+    <br><br>
+    <input type="text" id="lname" placeholder="lastname...">
+    <br><br><br>
+    <input type="button" value="delete" onclick="deletUser()" class="delete">
+    <br>
+    <input type="text" id="userId">
+    <br>
+    <button class="submit">Submit</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+            </tr>
+        </thead>
+        <tbody id="users"></tbody>
+    </table>
+</body>
+<script>
+    let stds = [];
+    const insertUsersToTable = function () {
+        let tbody = document.getElementById('users');
+        tbody.innerHTML = "";
+        stds.forEach(function (value, index) {
+            tbody.innerHTML += `<tr><td>${index + 1}</td><td>${value.firstname
+                }</td><td>${value.lastname}</td></tr>`;
+        });
+    };
+    const handelSubmit = function () {
+        let fname = document.getElementById("fname").value;
+        let lname = document.getElementById("lname").value;
+        stds.push({ firstname: fname, lastname: lname });
+        insertUsersToTable();
+    };
+    document.getElementsByTagName("button")[0].onclick = handelSubmit;
+
+    function deletUser() {
+        console.log('hi')
+        let userId = Number(document.getElementById("userId").value);
+        stds.splice(userId - 1, 1);
+        insertUsersToTable();
+    };
+</script>
+
+</html>

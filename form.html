@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="form-style.css">
+</head>
+
+<body>
+    
+    <div class="wrapper">
+        <div class="header">
+            <h3>Items</h3>
+        </div>
+        <form id="itemForm">
+            <div class="item">
+                <label for="green">Green</label>
+                <input id="green" type="checkbox" value="Green">
+            </div>
+            <div class="item">
+                <label for="pink">Pink</label>
+                <input id="pink" type="checkbox" value="Pink">
+            </div>
+            <div class="item">
+                <label for="yellow">Yellow</label>
+                <input id="yellow" type="checkbox" value="Yellow">
+            </div>
+            <div class="item">
+                <label for="black">Black</label>
+                <input id="black" type="checkbox" value="Black">
+            </div>
+            <button id="submit">Submit</button>
+
+        </form>
+    </div>
+    <p class="result"></p>
+
+
+
+</body>
+
+<script>
+ var itemForm = document.getElementById('itemForm');
+ var checkBoxes = itemForm.querySelectorAll('input[type="checkbox"]');
+ document.getElementById('submit').addEventListener('click', getData);
+ let selectedItems = [];
+ function getData() {
+            checkBoxes.forEach(item => { 
+                if (item.checked) {  
+                    selectedItems.push(item);
+                }
+            });
+            if (selectedItems.length < 2) { // check the selectedItems array length is less than 2 the throw error
+                alert("Minimum two colors you have to pick..");
+            }
+            else {
+                alert("Successfully submitted..");
+            }
+        };
+
+
+</script>
+
+
+
+
+</html>
