@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+   .test{
+    margin-top: 200px;
+    margin-left: 600px;
+    border: 1px solid black;
+    width: 270px;
+    
+   }
+   #demo{
+    margin-left: 70px;
+   }
+   .text{
+    padding-left: 30px;
+   }
+   body{
+    background-color: rgba(255, 228, 196, 0.171);
+   }
+    </style>
+</head>
+<body>
+    <div class="test">
+        <p class="text">درحال انتقال به درگاه بانکی</p>
+        <p id="demo"></p>
+        
+    </div>
+
+        <script>
+    let num=10;
+    setInterval(function(){
+        document.getElementById("demo").innerHTML=num;
+        if(num==0) window.location.href='dargah-2.html'
+        num--;
+    },1000);
+</script>
+</body>
+</html>
