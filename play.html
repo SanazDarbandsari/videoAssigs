@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body dir="rtl" onkeydown="myFn(event)" style="background-color: beige;">
+    <h3>دختر را به خانه برسانید</h3>
+
+    </div>
+    <div id="test"
+        style="width: 50px;height: 50px;position: fixed;background-color: pink;top: 0;left: 60px;border-radius: 50%;z-index: 1;">
+        <img src="download.jpg" alt="" style="width: 100px;">
+    </div>
+    <div
+        style="width: 50px;height: 50px;position: fixed;background-color: white;border: 1px solid purple;top: 30px;border-radius: 50%;left: 500px;">
+        <img src="nody-وکتور-لوکیشن-و-تلفن-1634260699.jpg" alt="" style="width: 100px;">
+
+    </div>
+    <button onclick="winPlay()">اتمام بازی</button>
+    <p id="demo"></p>
+
+    <script>
+        let leftElement = 0;
+        let topElement = 0;
+        const myFn = function (e) {
+            console.log(e.code);
+            let element = document.getElementById("test");
+            if (e.code == "ArrowRight") {
+                leftElement += 1;
+                element.style.left = `${leftElement}px`;
+            }
+            else if (e.code == "ArrowLeft") {
+                leftElement -= 1;
+                element.style.left = `${leftElement}px`;
+
+            } else if (e.code == "ArrowDown") {
+                topElement += 1;
+                element.style.top = `${topElement}px`;
+            } else if (e.code == "ArrowUp") {
+                topElement -= 1;
+                element.style.top = `${topElement}px`
+            }
+        };
+        function winPlay() {
+            var txt;
+            if (confirm("بازی را تمام کردید؟")) {
+                txt = "شما برنده شدید";
+            } else {
+                txt = "به بازی ادامه دهید";
+            }
+            document.getElementById("demo").innerHTML = txt;
+        }
+    </script>
+
+</body>
+
+</html>

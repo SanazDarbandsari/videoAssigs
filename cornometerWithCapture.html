@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        td,
+        th {
+            border: 1px solid rgba(0, 0, 255, 0.196);
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span id="m">00</span>
+        <span>:</span>
+        <span id="s">00</span>
+        <span>:</span>
+        <span id="ms">000</span>
+    </div>
+    <br><br>
+    <button onclick="startCornometer()">Start</button>
+    <button onclick="stopCornometer()">Stop</button>
+    <button onclick="resetCornometer()">Reset</button>
+    <button onclick="captureCornometer()">Capture</button>
+    <div>
+        <table>
+            <tr>
+                <th>m</th>
+                <th>s</th>
+                <th>ms</th>
+            </tr>
+            <tbody id="tbody">
+
+            </tbody>
+        </table>
+    </div>
+
+
+    <script>
+        let cornoTime = 0;
+        let cornoInterval = null;
+        let captureArray = [];
+
+
+        function startCornometer() {
+            cornoInterval = setInterval(function () {
+                cornoTime++;
+                let s = Math.floor(cornoTime / 1000);
+                let sm = cornoTime % 1000;
+                let m = Math.floor(Math.floor(cornoTime / 1000) / 60);
+                document.getElementById("ms").innerHTML = sm;
+                document.getElementById("s").innerHTML = s;
+            }, 1);
+        };
+
+        function stopCornometer() {
+            clearInterval(cornoInterval);
+        };
+        function resetCornometer() {
+            clearInterval(cornoInterval);
+            m = 0;
+            s = 0;
+            ms = 0;
+            document.getElementById("ms").innerHTML = "000";
+            document.getElementById("s").innerHTML = "00";
+            document.getElementById("m").innerHTML = "00";
+            captureArray = [];
+            showTable();
+        };
+        function captureCornometer() {
+            let cTime = {
+                ms,
+                s,
+                m,
+            };
+            captureArray.push(cTime);
+            showTable();
+
+        };
+        function showTable() {
+            let tbody = document.getElementById("tbody");
+            tbody.innerHTML = "";
+            captureArray.forEach(function (item) {
+                tbody.innerHTML += `                <tr>
+                    <td>${s}</td>
+                    <td>${m}</td>
+                    <td>${ms}</td>
+                </tr>`
+            });
+        }
+    </script>
+</body>
+
+</html>
