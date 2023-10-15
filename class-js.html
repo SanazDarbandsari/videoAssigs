@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // class stds{
+        //     constructor(fn,h,w) {
+        //         this.fname = fn;
+        //         this.height = h;
+        //         this.weight = w;
+        //     }
+        // }        
+        // let std1 = new stds('sanaz',165,56);
+        // let std2 = new stds('atosa',170,60);
+        // console.log(std1);
+
+        //**__ Speed**__//
+        class Car {
+            constructor(name, color, speed) {
+                this.name = name;
+                this.color = color;
+                this.speed = speed;
+
+            }
+        }
+        let car1 = new Car('bmw', 'black', 100);
+        let car2 = new Car('benz', "red", 250);
+        function Alert(speed) {
+            if (speed > 120) {
+                console.log('your speed is danger');
+            } else {
+                console.log('your speed is safe');
+            }
+        }
+        Alert(car2.speed);
+
+
+    </script>
+</body>
+
+</html>

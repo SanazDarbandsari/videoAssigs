@@ -6,68 +6,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         table,
-        td,
         th {
-            border: 1px solid rgba(0, 0, 255, 0.196);
+            border: 1px solid lightblue;
             border-collapse: collapse;
+            padding: 5px 20px;
         }
 
-        .delete {
-            background-color: rgba(255, 0, 0, 0.61);
+        td {
+            padding-left: 75px;
         }
 
-        .submit {
-            background-color: green;
+        table {
+            width: 100%;
         }
     </style>
 </head>
 
 <body>
-    <input type="text" id="fname" placeholder="first name...">
-    <br><br>
-    <input type="text" id="lname" placeholder="lastname...">
-    <br><br><br>
-    <input type="button" value="delete" onclick="deletUser()" class="delete">
-    <br>
-    <input type="text" id="userId">
-    <br>
-    <button class="submit">Submit</button>
-
-    <table>
-        <thead>
-            <tr>
-                <th>First name</th>
-                <th>Last name</th>
-            </tr>
-        </thead>
-        <tbody id="users"></tbody>
+    <table id="tabell" border="1px">
     </table>
-</body>
-<script>
-    let stds = [];
-    const insertUsersToTable = function () {
-        let tbody = document.getElementById('users');
-        tbody.innerHTML = "";
-        stds.forEach(function (value, index) {
-            tbody.innerHTML += `<tr><td>${index + 1}</td><td>${value.firstname
-                }</td><td>${value.lastname}</td></tr>`;
-        });
-    };
-    const handelSubmit = function () {
-        let fname = document.getElementById("fname").value;
-        let lname = document.getElementById("lname").value;
-        stds.push({ firstname: fname, lastname: lname });
-        insertUsersToTable();
-    };
-    document.getElementsByTagName("button")[0].onclick = handelSubmit;
 
-    function deletUser() {
-        console.log('hi')
-        let userId = Number(document.getElementById("userId").value);
-        stds.splice(userId - 1, 1);
-        insertUsersToTable();
-    };
+</body>
+
+<script>
+
+    function tabellOp() {
+        var Age = [[20, 22, 30, 18, 25, 28], [23, 24, 27, 28, 32, 35], [21, 20, 19, 18, 17, 20]];
+        var identify = ["Age", "weight", "height"];
+        var name = ['sanaz', 'paria','atosa', 'negar', 'ghazal', 'hana'];
+        var tabellget = document.querySelector("#tabell");
+        var row = "<tr><th> students</th>";
+
+        for (var i = 0; i < name.length; i++) {
+            row += "<th>" + name[i] + "</th>";
+        }
+        row += "</tr>";
+
+        for (var i = 0; i < identify.length; i++) {
+            row += "<tr><th>" + identify[i] + "</th>";
+            for (var j = 0; j < Age[i].length; j++) {
+                row += "<td>" + Age[i][j] + "</td>";
+            }
+            row += "</tr>";
+        }
+
+        tabellget.innerHTML = row;
+    }
+    window.onload = tabellOp;
+    
 </script>
 
 </html>
